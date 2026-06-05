@@ -1,0 +1,11 @@
+{
+  "name": "plnar-category-site",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node src/build.mjs",
+    "build:github-pages": "node src/build.mjs",
+    "dev": "node src/dev-server.mjs"
+  }
+}
