@@ -280,7 +280,7 @@ function home() {
   ${aiSection()}
   ${solutionsGrid()}
   ${integrationsPreview()}
-  ${proofSection()}
+  ${homeReadinessSection()}
   ${seoSection()}
   ${ctaBand("Make every property capture useful.", "See how smartphone imagery becomes the intelligence layer behind faster claims, better documentation, and clearer decisions.")}`;
 }
@@ -297,40 +297,61 @@ function conversionTools() {
 }
 
 function hero() {
-  const steps = ["Photos", "AI processing", "Property engine", "Measurements", "3D models", "Damage insights", "Estimate data", "Decisions"];
   return `<section class="hero section-shell">
     <div class="hero-copy" data-reveal>
       <p class="eyebrow">The AI Property Intelligence Platform</p>
       <h1>Turn Property Photos Into Intelligence</h1>
       <p class="lede">Plnar transforms smartphone imagery into actionable property intelligence that powers claims, inspections, restoration, estimation, and property operations.</p>
       ${ctaPair()}
-      <div class="hero-metrics" aria-label="Proof placeholders">
-        <span>Replace with verified customer proof</span>
-        <span>Security indicators placeholder</span>
+      <div class="hero-metrics" aria-label="Platform highlights">
+        <span>Smartphone-first capture</span>
+        <span>Structured property records</span>
+        <span>Estimate-ready outputs</span>
       </div>
     </div>
     <div class="hero-visual" data-reveal>
-      <div class="phone-frame">
-        <img src="/images/plnar-pro-photo-capture-ui.png" alt="Plnar mobile capture interface showing room photo documentation controls">
-      </div>
-      <div class="engine-card">
-        <div class="engine-orbit" aria-hidden="true"></div>
-        <p>Property Intelligence Engine</p>
-        <strong>Spatial record assembled</strong>
-        <span>Room context, measurements, imagery, and claim-ready outputs.</span>
-      </div>
-      <div class="pipeline" aria-label="Smartphone imagery to business decision workflow">
-        ${steps.map((step, index) => `<button class="pipe-node ${index === 0 ? "active" : ""}" type="button" data-pipe="${index}">${step}</button>`).join("")}
+      <div class="hero-system" aria-label="Plnar workflow from smartphone capture to estimate-ready output">
+        <div class="hero-phone">
+          <span class="system-label">Capture</span>
+          <img src="/images/plnar-pro-photo-capture-ui.png" alt="Plnar mobile capture interface showing room photo documentation controls">
+        </div>
+        <div class="hero-panel hero-panel-analysis">
+          <span class="system-label">Analysis</span>
+          <img src="/images/plnar-pro-combined-scan-video-ui.png" alt="Plnar analysis view showing room context">
+          <div class="system-note">
+            <strong>Damage context</strong>
+            <span>Room, surface, and photo evidence organized for review.</span>
+          </div>
+        </div>
+        <div class="hero-panel hero-panel-model">
+          <span class="system-label">Modeling</span>
+          <img src="/images/plnar-lidar-living-room-contact-sheet.jpg" alt="Plnar floorplan and modeling preview">
+        </div>
+        <div class="hero-panel hero-panel-output">
+          <span class="system-label">Estimation</span>
+          <img src="/images/plnar-estimate-export-frame.png" alt="Plnar estimate-ready export preview">
+        </div>
+        <div class="hero-steps" aria-hidden="true">
+          <span>Capture</span>
+          <span>Analyze</span>
+          <span>Model</span>
+          <span>Deliver</span>
+        </div>
       </div>
     </div>
   </section>`;
 }
 
 function trustLayer() {
-  const items = ["Verified customer logo placeholder", "Partner logo placeholder", "Integration logo placeholder", "Security indicator placeholder", "Case study metric placeholder"];
-  return `<section class="trust-strip" aria-label="Trust and proof placeholders" data-reveal>
+  const items = [
+    ["Built for claims, restoration, and inspection teams", "Workflow coverage"],
+    ["Designed for secure property workflows", "Operational readiness"],
+    ["Structured outputs for measurements, reports, and estimates", "Usable intelligence"],
+    ["Ready for approved proof, references, and customer evidence", "Proof-ready surface"]
+  ];
+  return `<section class="trust-strip" aria-label="Workflow trust signals" data-reveal>
     <p>Built for enterprise property workflows</p>
-    <div>${items.map((item) => `<span>${item}</span>`).join("")}</div>
+    <div>${items.map(([title, label]) => `<span><strong>${title}</strong><em>${label}</em></span>`).join("")}</div>
   </section>`;
 }
 
@@ -395,7 +416,13 @@ function showcaseSection() {
       <div class="stage-panel">
         ${stages.map(([label, copy, image], i) => `<article class="stage-item ${i === 0 ? "active" : ""}" data-stage-panel="${i}">
           <div><p class="eyebrow">Stage ${i + 1}</p><h3>${label}</h3><p>${copy}</p></div>
-          <img src="${image}" alt="Plnar ${label.toLowerCase()} product visual">
+          <div class="stage-visual stage-${label.toLowerCase()}">
+            <img src="${image}" alt="Plnar ${label.toLowerCase()} product visual">
+            <div class="stage-rail" aria-hidden="true">
+              <span>${label}</span>
+              <span>${i === 0 ? "Guided capture" : i === 1 ? "Structured analysis" : i === 2 ? "Shared model" : i === 3 ? "Estimate-ready" : "Connected delivery"}</span>
+            </div>
+          </div>
         </article>`).join("")}
       </div>
     </div>
@@ -445,7 +472,26 @@ function integrationsPreview() {
       <a class="text-link" href="/integrations">Explore integrations</a>
     </div>
     <div class="integration-grid">
-      ${integrations.map((name) => `<article class="integration-card" data-reveal><strong>${name}</strong><span>Integration framework placeholder</span></article>`).join("")}
+      ${integrations.map((name) => `<article class="integration-card" data-reveal><strong>${name}</strong><span>Workflow connection</span></article>`).join("")}
+    </div>
+  </section>`;
+}
+
+function homeReadinessSection() {
+  const modules = [
+    ["Enterprise-ready by design", "A product surface designed for operational teams, not a generic showcase experience."],
+    ["Built for secure property workflows", "Property evidence, measurements, and reviews need clear structure from capture through delivery."],
+    ["Designed for claims, restoration, and inspection teams", "The workflow story stays grounded in how real property work moves across organizations."],
+    ["Reserved for approved customer evidence", "When customer proof is cleared, this module can absorb verified logos, metrics, and case stories cleanly."]
+  ];
+  return `<section class="proof-section section-shell">
+    <div class="section-heading" data-reveal>
+      <p class="eyebrow">Enterprise readiness</p>
+      <h2>Operationally credible from the first impression.</h2>
+      <p>The homepage can signal trust and workflow seriousness now, while leaving room for verified customer evidence later.</p>
+    </div>
+    <div class="proof-grid readiness-grid">
+      ${modules.map(([title, copy]) => `<article class="proof-card readiness-card" data-reveal><span>Enterprise module</span><h3>${title}</h3><p>${copy}</p></article>`).join("")}
     </div>
   </section>`;
 }
